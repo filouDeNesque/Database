@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/txtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/name_player"
+        tools:ignore="RtlHardcoded" />
+    <EditText
+        android:id="@+id/txtscore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/score_player"
+        tools:ignore="RtlHardcoded" />
+
+
+
+</LinearLayout>

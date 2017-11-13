@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TestSqlite</string>
+    <string name="button">Button</string>
+    <string name="add">Add</string>
+    <string name="list">List</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="score_player">Score Player</string>
+    <string name="name_player">Name Player</string>
+</resources>
