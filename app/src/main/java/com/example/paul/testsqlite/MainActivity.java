@@ -32,9 +32,17 @@ public class MainActivity extends AppCompatActivity {
         btnPlay = (Button)findViewById(R.id.playbtn);
         btnPlay.setOnClickListener(btnPlayConnectListener);
 
+        final Button btnUpdate;
+        btnUpdate = (Button)findViewById(R.id.playbtn);
+        btnUpdate.setOnClickListener(new btnUpdateConnectListener());
+
+
+
         countRecords();
         readRecords();
     }
+
+
 
     private View.OnClickListener btnPlayConnectListener = new View.OnClickListener(){
         @Override

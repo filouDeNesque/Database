@@ -10,4 +10,10 @@
     <string name="_0_records_found">0 Records found</string>
     <string name="play">Play</string>
     <string name="title_activity_main3">Main3Activity</string>
+    <string name="yes">Yes</string>
+    <string name="la_question_est_ou_n_est_pas">La question est ou n\'est pas ?</string>
+    <string name="perhaps">Perhaps</string>
+    <string name="votre_score_1002pts">Votre Score : 1002Pts</string>
+    <string name="no">no</string>
+    <string name="out">out</string>
 </resources>
