@@ -41,4 +41,17 @@ public class TableControllerPlayer extends DatabaseManager {
 
         return recordCount;
     }
+
+    public boolean update(ScoreData scoreData){
+        ContentValues values = new ContentValues();
+        values.put("name", scoreData.getName());
+        values.put("score", scoreData.getScore());
+        values.put("when_", new Date().getTime());
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.update("T_Scores",values,"idScore = ?", new String[]{String.valueOf(scoreData.getIdScore())});
+        db.close();
+
+        return true;
+    }
 }

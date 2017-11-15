@@ -28,9 +28,22 @@ public class MainActivity extends AppCompatActivity {
         btnList = (Button)findViewById(R.id.listBtn);
         btnList.setOnClickListener(btnListConnectListener);
 
+        final Button btnPlay;
+        btnPlay = (Button)findViewById(R.id.playbtn);
+        btnPlay.setOnClickListener(btnPlayConnectListener);
+
         countRecords();
         readRecords();
     }
+
+    private View.OnClickListener btnPlayConnectListener = new View.OnClickListener(){
+        @Override
+        public void onClick(View c){
+            Intent intent1 = new Intent(MainActivity.this, Main3Activity.class);
+            countRecords();
+            startActivity(intent1);
+        }
+    };
 
     private View.OnClickListener btnListConnectListener = new View.OnClickListener(){
         @Override
@@ -45,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         int recordCount = new TableControllerPlayer(this).count();
         TextView viewRecords;
         viewRecords = (TextView) findViewById(R.id.textViewRecordCount);
-        viewRecords.setText (recordCount + " recor²ds found");
+        viewRecords.setText (recordCount + " records found");
     }
 
     public void readRecords(){
@@ -68,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 textViewpointplayer.setPadding(0,10,0,10);
                 textViewpointplayer.setText(TextViewContents);
                 textViewpointplayer.setTag(Integer.toString(id));
-                
+                textViewpointplayer.setOnLongClickListener(new onLongclickListenerScoreRecord());
 
                 linearLayoutRecords.addView(textViewpointplayer);
             }
