@@ -10,12 +10,17 @@
         android:layout_height="wrap_content"
         android:hint="@string/name_player"
         tools:ignore="RtlHardcoded" />
+
     <EditText
         android:id="@+id/txtscore"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:autoText="false"
+        android:editable="false"
         android:hint="@string/score_player"
-        tools:ignore="RtlHardcoded" />
+        android:inputType="number"
+        android:maxLines="1"
+        tools:ignore="Deprecated,RtlHardcoded" />
 
 
 

@@ -6,17 +6,17 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * Created by Pierre on 13/11/2017.
- */
 
 public class btnAddOnClickListener implements View.OnClickListener {
 
     public void onClick(View view){
-        Context context = view.getRootView().getContext();
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-        final View formElementsView = inflater.inflate(R.layout.add_player_form, null, false);
+
+        final Context context = view.getRootView().getContext();
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View formElementsView = inflater.inflate(R.layout.add_player_form,null, true);
 
         final EditText txtname = (EditText) formElementsView.findViewById(R.id.txtName);
         final EditText txtscore = (EditText) formElementsView.findViewById(R.id.txtscore);
@@ -29,9 +29,24 @@ public class btnAddOnClickListener implements View.OnClickListener {
                             public void onClick(DialogInterface dialog, int id){
                             String dbtxtname = txtname.getText().toString();
                             int dbtxtscore = Integer.parseInt(txtscore.getText().toString());
+                            ScoreData theScoreData= new ScoreData();
+                            theScoreData.setName(dbtxtname);
+                            theScoreData.setScore(dbtxtscore);
 
+                                boolean createSucessful = new TableControllerPlayer(context).create(theScoreData);
+                                if(createSucessful){
+
+                                    Toast.makeText(context,"Score was saved.", Toast.LENGTH_SHORT).show();}
+                                else{
+                                    Toast.makeText(context,"unable to save player information.", Toast.LENGTH_SHORT).show();
+                                }
                              dialog.cancel();
                             }
+
                         }).show();
+
+
     }
+
+
 }

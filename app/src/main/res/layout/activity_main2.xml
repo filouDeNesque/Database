@@ -7,10 +7,11 @@
     tools:context="com.example.paul.testsqlite.Main2Activity">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="UselessParent"
-        android:id="@+id/scrollView2">
+        android:paddingTop="80dp"
+        tools:ignore="UselessParent">
 
         <TextView
             android:id="@+id/scoresView"

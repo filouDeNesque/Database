@@ -7,4 +7,6 @@
     <string name="delete">Delete</string>
     <string name="score_player">Score Player</string>
     <string name="name_player">Name Player</string>
+    <string name="_0_records_found">0 Records found</string>
+    <string name="play">Play</string>
 </resources>

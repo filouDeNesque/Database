@@ -12,6 +12,9 @@ public class ScoreData {
     private int score;
     private Date when ;
 
+    public  ScoreData (){
+
+    }
     public ScoreData(int idScore, String name, int score, Date when) {
         this.setIdScore(idScore);
         this.setName(name);

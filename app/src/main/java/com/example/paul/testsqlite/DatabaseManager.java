@@ -17,7 +17,7 @@ import java.util.List;
 public class DatabaseManager extends SQLiteOpenHelper {
 
     private static final  String DATABASE_NAME = "Game.db";
-    private static final  int DATABASE_VERSION = 2;
+    private static final  int DATABASE_VERSION = 3;
 
     public DatabaseManager(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -56,7 +56,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         List<ScoreData> scores = new ArrayList<>();
 
         //1er technique : SQL
-        String strSql = "select * from T_Scores order by score desc limit 30";
+        String strSql = "select * from T_Scores order by idScore desc limit 200";
         Cursor cursor = this.getReadableDatabase().rawQuery(strSql,null);
         cursor.moveToFirst();
         while (! cursor.isAfterLast()){

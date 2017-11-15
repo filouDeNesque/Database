@@ -19,10 +19,10 @@ public class Main2Activity extends AppCompatActivity {
         scoresView = (TextView) findViewById(R.id.scoresView);
         databaseManager = new DatabaseManager(this);
 
-//        databaseManager.insertScore( "Angelo", 1000);
-//        databaseManager.insertScore( "Iron Man", 500);
-//        databaseManager.insertScore( "Aloubar", 250);
-//        databaseManager.insertScore( "Ephaistosse", 1500);
+//        databaseManager.insertScore( "polox", 1000);
+//        databaseManager.insertScore( "opppp", 500);
+//        databaseManager.insertScore( "oujhbutf", 250);
+//        databaseManager.insertScore( "hvhg", 1500);
 
         List<ScoreData> scores = databaseManager.readTop10();
         for (ScoreData score : scores){
