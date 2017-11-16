@@ -54,4 +54,14 @@ public class TableControllerPlayer extends DatabaseManager {
 
         return true;
     }
+
+    public boolean delete(ScoreData scoreData){
+        int id = scoreData.getIdScore();
+        String vid = Integer.toString(id);
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("T_Scores","idScore = ? " ,new String[]{vid});
+        db.close();
+
+        return true;
+    }
 }

@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         btnUpdate = (Button)findViewById(R.id.updateBtn);
         btnUpdate.setOnClickListener(new btnUpdateConnectListener());
 
+        final Button btnDelet;
+        btnDelet = (Button)findViewById(R.id.supprBtn);
+        btnDelet.setOnClickListener(new btnSuprConnectListener());
 
 
         countRecords();

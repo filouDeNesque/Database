@@ -7,7 +7,8 @@
     <Spinner
         android:id="@+id/spinId"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:gravity="center" />
 
     <EditText
         android:id="@+id/editNameUp"
@@ -25,7 +26,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="center"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:text="@string/score"
         tools:ignore="LabelFor" />
 </LinearLayout>

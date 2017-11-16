@@ -56,7 +56,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         List<ScoreData> scores = new ArrayList<>();
 
         //1er technique : SQL
-        String strSql = "select * from T_Scores order by idScore desc limit 200";
+        String strSql = "select * from T_Scores order by idScore asc limit 200";
         Cursor cursor = this.getReadableDatabase().rawQuery(strSql,null);
         cursor.moveToFirst();
         while (! cursor.isAfterLast()){
@@ -73,7 +73,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         List<Integer> listId = new ArrayList<>();
 
         //1er technique : SQL
-        String strSql = "select * from T_Scores order by idScore desc limit 200";
+        String strSql = "select * from T_Scores order by idScore asc limit 200";
         Cursor cursor = this.getReadableDatabase().rawQuery(strSql,null);
         cursor.moveToFirst();
         while (! cursor.isAfterLast()){

@@ -6,9 +6,13 @@ import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.List;
 
 
 public class onLongclickListenerScoreRecord implements View.OnLongClickListener {
@@ -32,6 +36,7 @@ public class onLongclickListenerScoreRecord implements View.OnLongClickListener 
                                editItem(v);
                                break;
                            case 1 :
+                               supprItem(v);
 
                                break;
                            default:
@@ -83,4 +88,53 @@ public void editItem(View v){
                     }).show();
 
 }
+
+public void supprItem (View v){
+     final DatabaseManager databaseManager;
+
+
+
+        final Context context = v.getRootView().getContext();
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+        final View formElementsView = inflater.inflate(R.layout.delet_element_form, null, true);
+
+
+        final Spinner spinId = (Spinner) formElementsView.findViewById(R.id.spinDelet);
+
+        databaseManager = new DatabaseManager(context);
+        final List<Integer> idList = databaseManager.readId();
+
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(v.getRootView().getContext(), android.R.layout.simple_spinner_item, idList);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinId.setAdapter(adapter);
+
+
+        new AlertDialog.Builder(context)
+                .setView(formElementsView)
+                .setTitle("Deleted player")
+                .setPositiveButton("Deleted",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                final int j = Integer.parseInt(String.valueOf(idList.get(0)));
+                                final int tid = spinId.getSelectedItemPosition()+j;
+
+                                ScoreData theScoreData = new ScoreData();
+                                theScoreData.setIdScore(tid);
+
+                                boolean createSucessful = new TableControllerPlayer(context).delete(theScoreData);
+                                if (createSucessful) {
+
+                                    Toast.makeText(context, "Score was deleted." + tid, Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, "unable to deleted player information.", Toast.LENGTH_SHORT).show();
+                                }
+                                databaseManager.close();
+                                dialog.cancel();
+                            }
+
+                        }).show();
+
+    }
+
 }
+
