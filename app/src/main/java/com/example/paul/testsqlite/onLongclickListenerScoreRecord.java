@@ -59,7 +59,7 @@ public void editItem(View v){
 
     new AlertDialog.Builder(context)
             .setView(formElementsView)
-            .setTitle("Edit player")
+            .setTitle("update player")
             .setPositiveButton("Edit",
                     new DialogInterface.OnClickListener(){
                         public void onClick(DialogInterface dialog, int id ){

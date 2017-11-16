@@ -36,6 +36,8 @@ public class Main3Activity extends AppCompatActivity {
         final TextView txtScoreM3A;
         txtScoreM3A = (TextView)findViewById(R.id.txtScoreM3A);
 
+
+
     }
 
     private View.OnClickListener btnYesClickListener = new View.OnClickListener(){

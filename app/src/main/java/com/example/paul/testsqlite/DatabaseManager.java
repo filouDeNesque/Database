@@ -68,4 +68,21 @@ public class DatabaseManager extends SQLiteOpenHelper {
         cursor.close();
         return scores;
     }
+
+    public List<Integer> readId(){
+        List<Integer> listId = new ArrayList<>();
+
+        //1er technique : SQL
+        String strSql = "select * from T_Scores order by idScore desc limit 200";
+        Cursor cursor = this.getReadableDatabase().rawQuery(strSql,null);
+        cursor.moveToFirst();
+        while (! cursor.isAfterLast()){
+            ScoreData score = new ScoreData( cursor.getInt(0), cursor.getString(1),
+                    cursor.getInt(2), new Date(cursor.getInt(3)));
+            listId.add(score.getIdScore());
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return listId;
+    }
 }

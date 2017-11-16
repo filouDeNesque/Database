@@ -16,4 +16,6 @@
     <string name="votre_score_1002pts">Votre Score : 1002Pts</string>
     <string name="no">no</string>
     <string name="out">out</string>
+    <string name="score">Score</string>
+    <string name="name">Name</string>
 </resources>

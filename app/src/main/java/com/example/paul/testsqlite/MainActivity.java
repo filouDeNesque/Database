@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         btnPlay.setOnClickListener(btnPlayConnectListener);
 
         final Button btnUpdate;
-        btnUpdate = (Button)findViewById(R.id.playbtn);
+        btnUpdate = (Button)findViewById(R.id.updateBtn);
         btnUpdate.setOnClickListener(new btnUpdateConnectListener());
 
 
