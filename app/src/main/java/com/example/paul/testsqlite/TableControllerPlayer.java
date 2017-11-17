@@ -55,6 +55,18 @@ public class TableControllerPlayer extends DatabaseManager {
         return true;
     }
 
+    public boolean updateGame(ScoreData scoreData){
+        ContentValues values = new ContentValues();
+        values.put("score", scoreData.getScore());
+        values.put("when_", new Date().getTime());
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.update("T_Scores",values,"idScore = ?", new String[]{String.valueOf(scoreData.getIdScore())});
+        db.close();
+
+        return true;
+    }
+
     public boolean delete(ScoreData scoreData){
         int id = scoreData.getIdScore();
         String vid = Integer.toString(id);

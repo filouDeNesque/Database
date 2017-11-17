@@ -42,20 +42,21 @@ public class btnUpdateConnectListener implements View.OnClickListener {
                 .setPositiveButton("Update",
                         new DialogInterface.OnClickListener(){
                             public void onClick(DialogInterface dialog, int id){
-                                final int j = Integer.parseInt(String.valueOf(idList.get(0)));
-                                final int tid = spinId.getSelectedItemPosition()+j;
+
+                                final int tid = spinId.getSelectedItemPosition();
+                                final int j = Integer.parseInt(String.valueOf(idList.get(tid)));
 
                                 String dbtxtname = txtname.getText().toString();
                                 int dbtxtscore = Integer.parseInt(txtscore.getText().toString());
                                 ScoreData theScoreData= new ScoreData();
                                 theScoreData.setName(dbtxtname);
                                 theScoreData.setScore(dbtxtscore);
-                                theScoreData.setIdScore(tid);
+                                theScoreData.setIdScore(j);
 
                                 boolean createSucessful = new TableControllerPlayer(context).update(theScoreData);
                                 if(createSucessful){
 
-                                    Toast.makeText(context,"Score was update."+tid, Toast.LENGTH_SHORT).show();}
+                                    Toast.makeText(context,"Score was update."+j, Toast.LENGTH_SHORT).show();}
                                 else{
                                     Toast.makeText(context,"unable to update player information.", Toast.LENGTH_SHORT).show();
                                 }

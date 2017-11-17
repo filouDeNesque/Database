@@ -1,12 +1,19 @@
 package com.example.paul.testsqlite;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -50,9 +57,47 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener btnPlayConnectListener = new View.OnClickListener(){
         @Override
         public void onClick(View c){
-            Intent intent1 = new Intent(MainActivity.this, Main3Activity.class);
-            countRecords();
-            startActivity(intent1);
+            final DatabaseManager databaseManager;
+            final Context context = c.getRootView().getContext();
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+            final View formElementsView = inflater.inflate(R.layout.choose_player_form,null,true);
+
+            final Spinner spinId = (Spinner) formElementsView.findViewById(R.id.spinChoose);
+
+            databaseManager = new DatabaseManager(context);
+            final List<Integer> idList = databaseManager.readId();
+
+            ArrayAdapter<Integer> adapter =new ArrayAdapter<Integer>(c.getRootView().getContext(),android.R.layout.simple_spinner_item, idList);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinId.setAdapter(adapter);
+
+
+            new AlertDialog.Builder(context)
+                    .setView(formElementsView)
+                    .setTitle("Choose player")
+                    .setPositiveButton("OK",
+                            new DialogInterface.OnClickListener(){
+                                public void onClick(DialogInterface dialog, int id){
+
+                                    final int tid = spinId.getSelectedItemPosition();
+                                    final int j = Integer.parseInt(String.valueOf(idList.get(tid)));
+
+                                    ScoreData theScoreData= new ScoreData();
+                                    theScoreData.setIdScore(j);
+
+                                    countRecords();
+                                    Toast.makeText(context,"Player was choose "+j, Toast.LENGTH_SHORT).show();
+                                    Intent intent1 = new Intent(MainActivity.this, Main3Activity.class);
+                                    intent1.putExtra("id",j);
+                                    startActivity(intent1);
+                                    databaseManager.close();
+                                    dialog.cancel();
+                                }
+
+                            }).show();
+
+
+
         }
     };
 
